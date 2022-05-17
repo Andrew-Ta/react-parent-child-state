@@ -1,13 +1,20 @@
-function User(props)
-{
+import * as React from 'react';
+import { Modal } from 'antd';
 
-    const name = "John Doe";
-    return (
-        <div>
-            <h2>User name is {props.name}</h2>
-            <button onClick={() => props.data(name)}>Submit</button>
-        </div>
-    )
-}
+class UserModal extends React.Component {
+    render() {
+      return (
+        <Modal
+          title="title"
+          centered={true}
+          visible={this.props.isOpen}
+          okText="ok"
+          onCancel={this.props.onClose}
+        >
+          Test
+        </Modal>
+      );
+    }
+  }
 
-export default User;
+export default UserModal;

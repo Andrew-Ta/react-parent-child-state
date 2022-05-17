@@ -1,19 +1,32 @@
-import './App.css';
-import User from './User.js';
+import React, { useState } from 'react';
+import 'antd/dist/antd.min.css';
+import './index.css';
+import { Button } from 'antd';
+import UserModal from './User';
 
-function App() {
+class App extends React.Component {
+  state = {
+    isModalOpen: false
+  };
 
-  function getName(name)
-  {
-    alert(name)
+  render() {
+    return (
+      <div>
+        <Button
+          onClick={() => this.setState({ isModalOpen: true })}
+        >
+          Open Modal
+        </Button>
+        <UserModal
+          isOpen={this.state.isModalOpen}
+          onClose={(e) => {
+            e.stopPropagation();
+            this.setState({ isModalOpen: false });
+          }}
+        />
+      </div>
+    );
   }
-
-  return (
-    <div className="App">
-      <h1>Lifting State Up</h1>
-      <User data={getName}/>
-    </div>
-  );
 }
 
 export default App;
